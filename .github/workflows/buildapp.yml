@@ -114,7 +114,7 @@ jobs:
         id: prepare_youtube
         run: |
           cd ${{ github.workspace }}/main
-          wget --no-verbose --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd" -O Youtube.zip && rm -rf /tmp/cookies.txt
+          wget --no-verbose --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd" -O YouTube.zip && rm -rf /tmp/cookies.txt
           unzip -q YouTube.zip
           youtube_version=$(defaults read "$(pwd)/Payload/YouTube.app/Info" CFBundleVersion)
           echo "==> YouTube v$youtube_version downloaded!"
