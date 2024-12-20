@@ -114,7 +114,7 @@ jobs:
         id: prepare_youtube
         run: |
           cd ${{ github.workspace }}/main
-          wget --no-verbose --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd" -O YouTube.zip && rm -rf /tmp/cookies.txt
+          wget --header='Host: drive.usercontent.google.com' --header='User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' --header='Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8' --header='Accept-Language: en-US,en;q=0.9' --header='Cookie: NID=520=RAR53G37kYL1kQUvFS0b4hLtgyvQv_XM-4VkusqdQrTQtqjnF7bKcjepPcVIBS0l8GVugSjvexOZYue3vZ_MeMzDRqnfqW3sNiAb6b4pOXQ-dFJfQz4RKeVs1bpl2xS1i_mLfdOhKLr9d8C8YLZgvOkZarQWRLTGT8IbAoh3eAEEu9oJwyD0UUE' --header='Connection: keep-alive' 'https://drive.usercontent.google.com/download?id=1vRKPnv96XXhfbfJYI8HbvV3jMaiEHCGd&export=download&confirm=t&uuid=47587ad5-8ece-48a1-bcc7-d2493ac6f696' -c -O 'YouTube.zip'
           unzip -q YouTube.zip
           youtube_version=$(defaults read "$(pwd)/Payload/YouTube.app/Info" CFBundleVersion)
           echo "==> YouTube v$youtube_version downloaded!"
